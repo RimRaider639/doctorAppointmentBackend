@@ -28,7 +28,6 @@ appointmentRouter.get("/", async (req, res, next) => {
   const filters = {};
   if (specialization) Object.assign(filters, { specialization });
   if (name) Object.assign(filters, { name: { $regex: name, $options: "i" } });
-  console.log(filters);
   try {
     const result = await Appointment.find(filters)
       .sort({ date: sort })
